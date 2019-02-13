@@ -1,6 +1,9 @@
-/**
- * EE422C Project 2 (Mastermind) 
- * Summer 2016
+/**  EE422C Project 2 (Mastermind)submission by
+ *  Replace <...> with your actual data.
+ *  Meyer Dauber
+ *  mjd3375
+ *  Slip days used: 0
+ *  Spring 2019
  */
 package assignment2;
 
