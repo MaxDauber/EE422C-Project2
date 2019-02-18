@@ -14,16 +14,23 @@ import java.io.*;
 public class Driver {
 
     public static void main(String[] args){
-        System.out.println("Welcome to Mastermind!");
-        System.out.println("Do you want to play a new game? (Y/N):");
-        Scanner scan = new Scanner(System.in);
-        if(scan.next().equals("Y")){
-            Game game;
-            if(args[0].equals("1"))//determining if need to run in test mode
-                game = new Game(true, scan);
+        boolean again = true;
+        System.out.print("Welcome to Mastermind!");
+        while(again){
+            System.out.println("\nDo you want to play a new game? (Y/N):");
+            Scanner scan = new Scanner(System.in);
+            if(scan.next().equals("Y")){
+                Game game;
+
+                if(args.length > 0 && args[0].equals("1"))//determining if need to run in test mode
+                    game = new Game(true, scan);
+                else
+                    game = new Game(false, scan);
+                game.runGame();
+            }
             else
-                game = new Game(false, scan);
-            game.runGame();
+                again = false;
         }
+
     }
 }

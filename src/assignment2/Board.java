@@ -22,6 +22,7 @@ public class Board {
         turn  = 0;
     }
 
+
     public void addGuess(String guess, Peg result){
         guesses[turn] = guess;
         feedback[turn] = result;
