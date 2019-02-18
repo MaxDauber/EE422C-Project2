@@ -35,16 +35,20 @@ public class Game {
         }
         System.out.println();
         for(int num = board.numTurns; num > 0; num--){
-            System.out.println("You have " + num + " guess(es) left");
+            System.out.println("You have " + num + " guess(es) left.");
             System.out.println("Enter guess: ");
             String guess = scan.next();
             while(!checkValidInput(guess)){
                 System.out.println("INVALID_GUESS\n");
-                System.out.println("You have " + num + " guess(es) left");
+                System.out.println("You have " + num + " guess(es) left.");
                 System.out.println("Enter guess: ");
                 guess = scan.next();
             }
-
+            if(guess.equals("HISTORY")){
+                System.out.println(board.toString());
+                num++;
+                continue;
+            }
             Peg result = checkInput(guess);
             board.addGuess(guess, result);
             if(result.black == GameConfiguration.pegNumber){
@@ -53,14 +57,14 @@ public class Game {
                 break;
             }
             else
-                System.out.println(board.toString());
+                System.out.println(guess + " -> "+result.toString() + "\n");
 
 
         }
         if(won)
             System.out.println("You win!");
         else
-            System.out.println("You lose!");
+            System.out.println("You lose! The pattern was " + secret_code);
     }
     /**
      * Checks guess to make sure it is made up of correct colors and is correct length
@@ -68,9 +72,11 @@ public class Game {
      * @return true if the input fits the parameters, false if not
      */
     public boolean checkValidInput(String guess){
-        if(guess.length() != GameConfiguration.pegNumber){
+        if(guess.equals("HISTORY"))
+            return true;
+        if(guess.length() != GameConfiguration.pegNumber)
             return false;
-        }
+
         boolean check;
         for(int i = 0; i < guess.length(); i++){
             check = false;

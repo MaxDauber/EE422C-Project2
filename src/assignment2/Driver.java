@@ -15,10 +15,10 @@ public class Driver {
 
     public static void main(String[] args){
         boolean again = true;
-        System.out.print("Welcome to Mastermind!");
+        System.out.print("Welcome to Mastermind.");
+        Scanner scan = new Scanner(System.in);
         while(again){
             System.out.println("\nDo you want to play a new game? (Y/N):");
-            Scanner scan = new Scanner(System.in);
             if(scan.next().equals("Y")){
                 Game game;
 
